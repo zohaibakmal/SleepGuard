@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SleepGuard</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="SleepToogleOn">Sleeping</string>
+    <string name="AppName">Sleep Guard</string>
+    <string name="TestNotificationButton">Test Notification</string>
+
+</resources>
