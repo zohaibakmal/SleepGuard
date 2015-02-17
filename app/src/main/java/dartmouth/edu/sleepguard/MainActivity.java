@@ -12,6 +12,8 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Handler;
+
+import android.app.FragmentManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -80,7 +82,7 @@ public class MainActivity extends ActionBarActivity implements GoogleApiClient.C
         View.OnClickListener handler = new View.OnClickListener(){
             public void onClick(View v) {
             if (!notificationActive){
-                showNotification();
+                showNotification("You are disturbing someone's peace sleep");
                 notificationActive = true;
             }else{
                 cancelNotification(0);
@@ -262,7 +264,7 @@ public class MainActivity extends ActionBarActivity implements GoogleApiClient.C
 
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-    public void showNotification(){
+    public void showNotification(String text){
 
         // define sound URI, the sound to be played when there's a notification
         Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
@@ -275,14 +277,13 @@ public class MainActivity extends ActionBarActivity implements GoogleApiClient.C
         // in the addAction method, if you don't want any icon, just set the first param to 0
         Notification mNotification = new Notification.Builder(this)
 
-                .setContentTitle("New Post!")
-                .setContentText("Here's an awesome update for you!")
+                .setContentTitle("Notification!")
+                .setContentText(text)
                 .setSmallIcon(R.drawable.ic_launcher)
                 .setContentIntent(pIntent)
                 .setSound(soundUri)
                 .addAction(R.drawable.ic_launcher, "View", pIntent)
                 .addAction(0, "Remind", pIntent)
-
                 .build();
 
         NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
@@ -291,6 +292,9 @@ public class MainActivity extends ActionBarActivity implements GoogleApiClient.C
         // myNotification.flags |= Notification.FLAG_AUTO_CANCEL;
 
         notificationManager.notify(0, mNotification);
+        DisturbingNotification disturbingNotification=new DisturbingNotification();
+        FragmentManager fm = getFragmentManager();
+        disturbingNotification.show(fm,"Notification!");
     }
 
     public void cancelNotification(int notificationId){

@@ -7,5 +7,8 @@
     <string name="SleepToogleOn">Sleeping</string>
     <string name="AppName">Sleep Guard</string>
     <string name="TestNotificationButton">Test Notification</string>
+    <string name="DisturbingNotification">You are disturbing someone\'s sleep</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancel</string>
 
 </resources>
